@@ -15,9 +15,4 @@ export default {
 </script>
 
 <style scoped>
-.test {
-    margin: 40px auto;
-    width: 90%;
-    padding: 20px;
-}
 </style>
