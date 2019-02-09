@@ -89,7 +89,6 @@ TODO
 
 <script>
 export default {
-    components: { StepButton },
     props: ["job_data"],
     data() {
         return {
