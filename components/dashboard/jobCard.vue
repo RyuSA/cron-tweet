@@ -79,8 +79,8 @@ export default {
 .build {
     position: absolute;
     top: 10px;
-    right: 10%;
-    z-index: 999;
+    right: 20px;
+    z-index: 1;
 }
 
 .footer {
