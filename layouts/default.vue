@@ -74,9 +74,8 @@ export default {
         return {
             drawer: null,
             user: {
-                screen_name: "Araki",
-                icon_url:
-                    "https://pbs.twimg.com/profile_images/1020074157072007168/uda2rt3R_400x400.jpg"
+                screen_name: "RyuSA",
+                icon_url: "https://github.com/ryusa.png"
             }
         };
     }
