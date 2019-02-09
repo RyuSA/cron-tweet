@@ -37,7 +37,7 @@
                                 <v-list-tile-title>共通設定</v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
-                        <v-list-tile>
+                        <v-list-tile @click="$router.push('/job/new')">
                             <v-list-tile-action>
                                 <v-icon>create</v-icon>
                             </v-list-tile-action>
