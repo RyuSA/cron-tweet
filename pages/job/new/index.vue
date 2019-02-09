@@ -13,6 +13,7 @@ export default {
     },
     data() {
         return {
+            // 初期データは空
             job_data: {
                 name: null,
                 type: null,

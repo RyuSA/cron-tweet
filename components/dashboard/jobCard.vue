@@ -1,3 +1,10 @@
+<!--
+TODO
+- 「実行タイプ：毎週」の特殊分岐の実装箇所がハードコートされている
+- 「実行タイプ：毎週」のEnumを統一する(別コンポーネントでは「毎週」)
+- データを取得する実装がまだ終わっていない
+-->
+
 <template>
     <v-container>
         <v-sheet class="d-flex" color="grey lighten-3 mb-3" height="200"></v-sheet>
@@ -15,6 +22,7 @@
                         <v-chip outline color="error" v-else>stop</v-chip>
                     </v-layout>
                     <v-list dense class="mb-5">
+                        <!-- 毎週実行の時は曜日も表示 -->
                         <v-list-tile v-if="job.schedule.type == 'weekly'">
                             <v-list-tile-content>曜日:</v-list-tile-content>
                             <v-list-tile-content class="align-end">{{ job.schedule.day }}</v-list-tile-content>
@@ -37,6 +45,7 @@
 export default {
     data() {
         return {
+            // ユーザーの登録しているジョブの配列
             jobs: [
                 {
                     name: "毎週発火",
