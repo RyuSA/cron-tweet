@@ -13,8 +13,9 @@ TODO
             <v-expansion-panel-content v-for="job in jobs" :key="job.name" class="pa-0">
                 <div slot="header">{{ job.name }}</div>
                 <v-card class="pa-4">
+                    <!-- 詳細設定 -->
                     <div class="build">
-                        <v-icon color="secondary">settings</v-icon>
+                        <v-icon color="secondary" @click="job_setting(job)">settings</v-icon>
                     </div>
                     <v-layout>
                         <v-chip outline color="accent">{{ job.schedule.type }}</v-chip>
@@ -48,10 +49,10 @@ export default {
             // ユーザーの登録しているジョブの配列
             jobs: [
                 {
-                    name: "毎週発火",
+                    name: "動画広告ツイート",
                     schedule: {
-                        type: "weekly",
-                        day: "Mon"
+                        type: "毎週",
+                        day: "月曜日"
                     },
                     exec_time: "10:00",
                     updated_at: "2019-01-01 11:00:00",
@@ -59,9 +60,9 @@ export default {
                     is_active: true
                 },
                 {
-                    name: "毎日発火",
+                    name: "プラベ募集",
                     schedule: {
-                        type: "dayly"
+                        type: "毎日"
                     },
                     exec_time: "10:00",
                     updated_at: "2018-01-01 12:34:56",
@@ -69,9 +70,9 @@ export default {
                     is_active: true
                 },
                 {
-                    name: "マニュアル発火",
+                    name: "イベント告知用",
                     schedule: {
-                        type: "once"
+                        type: "個別"
                     },
                     exec_time: "10:00",
                     updated_at: "2019-01-01 11:00:00",
@@ -80,6 +81,12 @@ export default {
                 }
             ]
         };
+    },
+    methods: {
+        job_setting(job) {
+            this.$store.dispatch("job/save_your_job", job);
+            this.$router.push("/job/new");
+        }
     }
 };
 </script>

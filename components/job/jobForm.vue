@@ -89,7 +89,6 @@ TODO
 
 <script>
 export default {
-    props: ["job_data"],
     data() {
         return {
             // カーソル
@@ -113,10 +112,11 @@ export default {
         };
     },
     created: function() {
+        // storeのデータをディープコピーしたものを保存する
         this.input_data = Object.assign(
             {},
             this.input_data,
-            this.$props.job_data
+            JSON.parse(JSON.stringify(this.$store.state.job.instance))
         );
     },
     methods: {
@@ -130,7 +130,6 @@ export default {
         },
         // コンソールを移動する ただし1未満になる場合は1にする
         moveE6: function(num) {
-            console.log("hoge");
             if (this.e6 + num < 1) {
                 this.e6 = 1;
             } else {
