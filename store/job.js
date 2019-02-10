@@ -31,20 +31,22 @@ export const mutations = {
 
 export const actions = {
     reset_job_instance(context) {
-        empty_job = {
-            name: null,
-            schedule: {
-                type: null,
-                day: null
+        // 空のjobデータを生成する
+        context.commit('save_job_instance',
+            {
+                name: null,
+                schedule: {
+                    type: null,
+                    day: null
+                },
+                exec_time: null,
+                updated_at: null,
+                created_at: null,
+                is_active: false,
+                job_id: null,
+                is_new_instance: true
             },
-            exec_time: null,
-            updated_at: null,
-            created_at: null,
-            is_active: false,
-            job_id: null,
-            is_new_instance: true
-        }
-        context.commit('save_job_instance', empty_job, true);
+            true);
     },
     save_your_job(context, job) {
         context.commit('save_job_instance', job, false);

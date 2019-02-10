@@ -85,7 +85,7 @@ export default {
     methods: {
         job_setting(job) {
             this.$store.dispatch("job/save_your_job", job);
-            this.$router.push("/job/new");
+            this.$router.push("/job/update");
         }
     }
 };
