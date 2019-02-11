@@ -18,19 +18,25 @@ TODO
 
         <v-stepper-step :complete="e6 > 2" step="2">
             タイプ
-            <small>{{input_data.schedule.type}} {{ input_data.schedule.day }}</small>
+            <small
+                v-if="input_data.schedule.type == this.$store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja"
+            >{{input_data.schedule.type}} {{ input_data.schedule.day }}</small>
+            <small v-else>{{input_data.schedule.type}}</small>
         </v-stepper-step>
         <v-stepper-content step="2">
-            <v-select :items="types" v-model="input_data.schedule.type"></v-select>
             <v-select
-                :items="days"
-                v-if="input_data.schedule.type == '毎週'"
+                :items="this.$store.state.enum.display_schedule_types"
+                v-model="input_data.schedule.type"
+            ></v-select>
+            <v-select
+                :items="this.$store.state.enum.display_weekdays"
+                v-if="input_data.schedule.type == this.$store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja"
                 v-model="input_data.schedule.day"
             ></v-select>
             <v-btn
                 color="primary"
                 @click="goto_next"
-                :disabled="input_data.schedule.type == '毎週' ? !input_data.schedule.type || !input_data.schedule.day : !input_data.schedule.type"
+                :disabled="input_data.schedule.type == this.$store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja ? !input_data.schedule.type || !input_data.schedule.day : !input_data.schedule.type"
             >Continue</v-btn>
             <v-btn flat @click="goto_back">Back</v-btn>
         </v-stepper-content>
@@ -93,18 +99,6 @@ export default {
         return {
             // カーソル
             e6: 1,
-            // 実行タイプ
-            types: ["毎日", "毎週", "マニュアル"],
-            // 曜日
-            days: [
-                "日曜日",
-                "月曜日",
-                "火曜日",
-                "水曜日",
-                "木曜日",
-                "金曜日",
-                "土曜日"
-            ],
             // 実行時刻
             time_picker_modal: null,
             // ユーザー入力データ

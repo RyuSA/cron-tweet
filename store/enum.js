@@ -9,19 +9,42 @@ export const state = () => ({
         { id: 5, display_name_ja: "金曜日" },
         { id: 6, display_name_ja: "土曜日" }
     ],
-
-    // スケジュールタイプ一覧
-    schedule_types: [
-        { id: 0, display_name_ja: "毎日" },
-        { id: 1, display_name_ja: "毎週" },
-        { id: 2, display_name_ja: "単発" }
+    display_weekdays: [
+        "日曜日",
+        "月曜日",
+        "火曜日",
+        "水曜日",
+        "木曜日",
+        "金曜日",
+        "土曜日"
     ],
 
     // スケジュールタイプEnum
-    EVERY_DAY: 0,
-    EVERY_WEEK: 1,
-    ONCE: 2
+    SCHEDULED_EVERYDAY: {
+        id: 0,
+        display_name_ja: "毎日"
+    },
+    SCHEDULED_EVERYWEEK: {
+        id: 1,
+        display_name_ja: "毎週"
+    },
+    SCHEDULED_ONCE: {
+        id: 2,
+        display_name_ja: "単発"
+    },
 
+    // スケジュールタイプ一覧
+    schedule_types: [
+        state.SCHEDULED_EVERYDAY,
+        state.SCHEDULED_EVERYWEEK,
+        state.SCHEDULED_ONCE
+    ],
+
+    display_schedule_types: [
+        "毎日",
+        "毎週",
+        "単発"
+    ],
 })
 
 export const getter = {

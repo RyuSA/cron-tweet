@@ -18,13 +18,22 @@ TODO
                         <v-icon color="secondary" @click="job_setting(job)">settings</v-icon>
                     </div>
                     <v-layout>
-                        <v-chip outline color="accent">{{ job.schedule.type }}</v-chip>
+                        <v-chip
+                            outline
+                            color="accent"
+                            v-if="job.schedule.type
+                            == $store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja"
+                        >{{ job.schedule.type + job.schedule.day}}</v-chip>
+                        <v-chip outline color="accent" v-else>{{ job.schedule.type}}</v-chip>
                         <v-chip outline color="primary" v-if="job.is_active == true">runnning</v-chip>
                         <v-chip outline color="error" v-else>stop</v-chip>
                     </v-layout>
                     <v-list dense class="mb-5">
                         <!-- 毎週実行の時は曜日も表示 -->
-                        <v-list-tile v-if="job.schedule.type == 'weekly'">
+                        <v-list-tile
+                            v-if="job.schedule.type
+                            == $store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja"
+                        >
                             <v-list-tile-content>曜日:</v-list-tile-content>
                             <v-list-tile-content class="align-end">{{ job.schedule.day }}</v-list-tile-content>
                         </v-list-tile>
@@ -51,8 +60,9 @@ export default {
                 {
                     name: "動画広告ツイート",
                     schedule: {
-                        type: "毎週",
-                        day: "月曜日"
+                        type: this.$store.state.enum.SCHEDULED_EVERYWEEK
+                            .display_name_ja,
+                        day: this.$store.state.enum.display_weekdays[1]
                     },
                     exec_time: "10:00",
                     updated_at: "2019-01-01 11:00:00",
@@ -62,7 +72,8 @@ export default {
                 {
                     name: "プラベ募集",
                     schedule: {
-                        type: "毎日"
+                        type: this.$store.state.enum.SCHEDULED_EVERYDAY
+                            .display_name_ja
                     },
                     exec_time: "10:00",
                     updated_at: "2018-01-01 12:34:56",
@@ -72,7 +83,8 @@ export default {
                 {
                     name: "イベント告知用",
                     schedule: {
-                        type: "個別"
+                        type: this.$store.state.enum.SCHEDULED_ONCE
+                            .display_name_ja
                     },
                     exec_time: "10:00",
                     updated_at: "2019-01-01 11:00:00",
@@ -84,6 +96,7 @@ export default {
     },
     methods: {
         job_setting(job) {
+            // 選択したjobをVuexに保存
             this.$store.dispatch("job/save_your_job", job);
             this.$router.push("/job/update");
         }
