@@ -12,6 +12,7 @@ export default {
         jobForm
     },
     created: function() {
+        this.$store.dispatch("route/route", "新規作成");
         // 初期登録のため、データを初期化する
         this.$store.dispatch("job/reset_job_instance");
     }

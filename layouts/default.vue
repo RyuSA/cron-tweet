@@ -61,7 +61,9 @@
                 <v-flex xs10 offset-xs1>
                     <v-card class="card--flex-toolbar">
                         <v-toolbar card prominent>
-                            <v-toolbar-title class="grey--text">ダッシュボード</v-toolbar-title>
+                            <v-toolbar-title
+                                class="grey--text"
+                            >{{ this.$store.state.route.page_name }}</v-toolbar-title>
                         </v-toolbar>
 
                         <v-divider></v-divider>

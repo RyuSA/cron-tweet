@@ -14,6 +14,9 @@ import jobForm from "~/components/job/jobForm.vue";
 export default {
     components: {
         jobForm
+    },
+    created() {
+        this.$store.dispatch("route/route", "変更");
     }
 };
 </script>
