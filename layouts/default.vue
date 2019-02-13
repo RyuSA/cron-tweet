@@ -34,7 +34,7 @@
                                 <v-icon>dashboard</v-icon>
                             </v-list-tile-action>
                             <v-list-tile-content>
-                                <v-list-tile-title>Dashboard</v-list-tile-title>
+                                <v-list-tile-title>ダッシュボード</v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
                         <v-list-tile>
@@ -61,7 +61,7 @@
                 <v-flex xs10 offset-xs1>
                     <v-card class="card--flex-toolbar">
                         <v-toolbar card prominent>
-                            <v-toolbar-title class="grey--text">Dashboard</v-toolbar-title>
+                            <v-toolbar-title class="grey--text">ダッシュボード</v-toolbar-title>
                         </v-toolbar>
 
                         <v-divider></v-divider>

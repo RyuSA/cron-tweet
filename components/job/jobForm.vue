@@ -12,8 +12,8 @@ TODO
         </v-stepper-step>
         <v-stepper-content step="1" ref="job_name_form">
             <v-text-field v-model="input_data.name" required></v-text-field>
-            <v-btn color="primary" :disabled="!input_data.name" @click="goto_next">Continue</v-btn>
-            <v-btn flat @click="goto_back">Back</v-btn>
+            <v-btn color="primary" :disabled="!input_data.name" @click="goto_next">次へ</v-btn>
+            <v-btn flat @click="goto_back">戻る</v-btn>
         </v-stepper-content>
 
         <v-stepper-step :complete="e6 > 2" step="2">
@@ -37,8 +37,8 @@ TODO
                 color="primary"
                 @click="goto_next"
                 :disabled="input_data.schedule.type == this.$store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja ? !input_data.schedule.type || !input_data.schedule.day : !input_data.schedule.type"
-            >Continue</v-btn>
-            <v-btn flat @click="goto_back">Back</v-btn>
+            >次へ</v-btn>
+            <v-btn flat @click="goto_back">戻る</v-btn>
         </v-stepper-content>
 
         <v-stepper-step :complete="e6 > 3" step="3">
@@ -73,22 +73,22 @@ TODO
                     <v-btn flat color="primary" @click="$refs.dialog.save(input_data.exec_time)">OK</v-btn>
                 </v-time-picker>
             </v-dialog>
-            <v-btn color="primary" @click="goto_next" :disabled="!input_data.exec_time">Continue</v-btn>
-            <v-btn flat @click="goto_back">Back</v-btn>
+            <v-btn color="primary" @click="goto_next" :disabled="!input_data.exec_time">次へ</v-btn>
+            <v-btn flat @click="goto_back">戻る</v-btn>
         </v-stepper-content>
 
         <v-stepper-step :complete="e6 > 4" step="4">ツイート内容</v-stepper-step>
         <v-stepper-content step="4">
             <v-textarea v-model="input_data.content"></v-textarea>
-            <v-btn color="primary" @click="goto_next" :disabled="!input_data.content">Continue</v-btn>
-            <v-btn flat @click="goto_back">Back</v-btn>
+            <v-btn color="primary" @click="goto_next" :disabled="!input_data.content">次へ</v-btn>
+            <v-btn flat @click="goto_back">戻る</v-btn>
         </v-stepper-content>
 
         <v-stepper-step step="5">確認</v-stepper-step>
         <v-stepper-content step="5">
             <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
-            <v-btn color="primary" @click="submit">Submit</v-btn>
-            <v-btn flat>Cancel</v-btn>
+            <v-btn color="primary" @click="submit">登録</v-btn>
+            <v-btn flat @click="goto_back">戻る</v-btn>
         </v-stepper-content>
     </v-stepper>
 </template>

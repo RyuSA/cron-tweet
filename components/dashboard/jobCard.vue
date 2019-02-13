@@ -15,7 +15,9 @@ TODO
                 <v-card class="pa-4">
                     <!-- 詳細設定 -->
                     <div class="build">
-                        <v-icon color="secondary" @click="job_setting(job)">settings</v-icon>
+                        <v-btn flat icon>
+                            <v-icon color="secondary" @click="job_setting(job)">settings</v-icon>
+                        </v-btn>
                     </div>
                     <v-layout>
                         <v-chip
@@ -25,8 +27,8 @@ TODO
                             == $store.state.enum.SCHEDULED_EVERYWEEK.display_name_ja"
                         >{{ job.schedule.type + job.schedule.day}}</v-chip>
                         <v-chip outline color="accent" v-else>{{ job.schedule.type}}</v-chip>
-                        <v-chip outline color="primary" v-if="job.is_active == true">runnning</v-chip>
-                        <v-chip outline color="error" v-else>stop</v-chip>
+                        <v-chip outline color="primary" v-if="job.is_active == true">稼働中</v-chip>
+                        <v-chip outline color="error" v-else>停止中</v-chip>
                     </v-layout>
                     <v-list dense class="mb-5">
                         <!-- 毎週実行の時は曜日も表示 -->
