@@ -12,3 +12,13 @@ dist
 
 # firebase
 .firebase
+
+# venv
+venv
+
+# debug db
+*.sqlite3
+
+# pycache
+__pycache__
+*.pyc
